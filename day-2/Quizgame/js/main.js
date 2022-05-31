@@ -1,0 +1,42 @@
+const quizDb = [
+  {
+    question: "What is the full form of Html.?",
+    a: "Hyper text markup language",
+    b: "Hyper text transfor making language",
+    c: "Hyper text making length",
+    d: "None of them",
+    corretAns: "ans1",
+  },
+  {
+    question: "CEO of googl.?",
+    a: "MarkZuker Burg",
+    b: "Bill gates",
+    c: "Sunder Pichai",
+    d: "ELon Musk",
+    corretAns: "ans3",
+  },
+  {
+    question: "Php framwork.?",
+    a: "Django",
+    b: "React",
+    c: "Node",
+    d: "Laravel",
+    corretAns: "ans4",
+  },
+  {
+    question: "Founder of Facebook.?",
+    a: "Elon musk",
+    b: "Bill gates",
+    c: "Jack Maa",
+    d: "Markzuker Burg",
+    corretAns: "ans4",
+  },
+  {
+    question: "Most Populer programming language in 2021.?",
+    a: "Javascript",
+    b: "Python",
+    c: "C++",
+    d: "Php",
+    corretAns: "ans2",
+  },
+];
