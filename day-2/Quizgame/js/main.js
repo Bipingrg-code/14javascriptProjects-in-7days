@@ -32,7 +32,7 @@ const quizDb = [
     corretAns: "ans4",
   },
   {
-    question: "Most Populer programming language in 2021.?",
+    question: "Populer programming language in 2021.?",
     a: "Javascript",
     b: "Python",
     c: "C++",
@@ -40,3 +40,25 @@ const quizDb = [
     corretAns: "ans2",
   },
 ];
+//grab the value
+const questions = document.querySelector(".questions");
+const answer1 = document.querySelector("#option1");
+const answer2 = document.querySelector("#option2");
+const answer3 = document.querySelector("#option3");
+const answer4 = document.querySelector("#option4");
+const button = document.querySelector("#submit");
+
+var questionCount = 0;
+
+const loadQuiz = () => {
+  quizDb.map((questList) => {
+    questionCount = questList;
+    questions.innerText = questionCount.question;
+    answer1.innerText = questionCount.a;
+    answer2.innerText = questionCount.b;
+    answer3.innerText = questionCount.c;
+    answer4.innerText = questionCount.d;
+  });
+};
+
+loadQuiz();
