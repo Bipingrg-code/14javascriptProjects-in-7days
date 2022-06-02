@@ -47,9 +47,9 @@ const answer2 = document.querySelector("#option2");
 const answer3 = document.querySelector("#option3");
 const answer4 = document.querySelector("#option4");
 const button = document.querySelector("#submit");
-const answers = document.querySelectorAll('.answer');
+const answers = document.querySelectorAll(".answer");
 
-const showScore = document.querySelector('#showScore')
+const showScore = document.querySelector("#showScore");
 
 var questionCount = 0;
 var score = 0;
@@ -65,13 +65,13 @@ var score = 0;
 };*/
 
 const loadQuiz = () => {
-  const questionList =  quizDb[questionCount]
-  questions.textContent = questionList.question
-  answer1.textContent = questionList.a
-  answer2.textContent = questionList.b
-  answer3.textContent = questionList.c
-  answer4.textContent = questionList.d
-}
+  const questionList = quizDb[questionCount];
+  questions.textContent = questionList.question;
+  answer1.textContent = questionList.a;
+  answer2.textContent = questionList.b;
+  answer3.textContent = questionList.c;
+  answer4.textContent = questionList.d;
+};
 
 loadQuiz();
 
@@ -79,13 +79,20 @@ loadQuiz();
 const getCheckAns = () => {
   let ans;
   answers.forEach((currentAnsElement) => {
-    if(currentAnsElement.checked){
-      ans = currentAnsElement.id
+    if (currentAnsElement.checked) {
+      ans = currentAnsElement.id;
     }
   });
   return ans;
-}
-button.addEventListener('click', () => {
+};
+//deSelect the input section
+const deSelectAll = () => {
+  answers.forEach((currentEle) => {
+    return (currentEle.checked = false);
+  });
+};
+
+button.addEventListener("click", () => {
   const checkedAns = getCheckAns();
   console.log(getCheckAns());
   //answer checking
@@ -93,13 +100,15 @@ button.addEventListener('click', () => {
     score++;
   }
   questionCount++;
+  //deselecting auto input
+  deSelectAll();
   if (questionCount < quizDb.length) {
     loadQuiz();
-  }else{
+  } else {
     showScore.innerHTML = `
-      <h3>You scored ${score}/${quizDb.length}</h3>
+      <h3>You scored  &#129419;${score}/${quizDb.length}&#129419;</h3>
       <button class="btn" onclick="location.reload()">Play Again</button>
-    `
-    showScore.classList.remove('scoreArea');
+    `;
+    showScore.classList.remove("scoreArea");
   }
-})
+});

@@ -54,11 +54,22 @@ input {
 }
 /*This for dynamically*/
 #showScore {
-  background-color: rgb(146, 146, 146);
+  background-color: #46b2e0;
   margin-top: 10px;
-  padding: 20px 35px;
+  padding: 20px 30px;
   text-align: center;
   box-shadow: 2px 4px 8px 1px rgba(0, 0, 0, 0.68);
+}
+#showScore h3 {
+  font-weight: 400;
+}
+#showScore .btn {
+  font-size: 19px;
+  font-weight: 500;
+  background-color: #5a8683;
+}
+#showScore .btn:hover {
+  background-color: #3944f7;
 }
 .scoreArea {
   display: none;
