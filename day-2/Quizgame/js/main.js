@@ -47,10 +47,11 @@ const answer2 = document.querySelector("#option2");
 const answer3 = document.querySelector("#option3");
 const answer4 = document.querySelector("#option4");
 const button = document.querySelector("#submit");
+const answers = document.querySelectorAll('.answer');
 
 var questionCount = 0;
 
-const loadQuiz = () => {
+/*const loadQuiz = () => {
   quizDb.map((questList) => {
     questionCount = questList;
     questions.innerText = questionCount.question;
@@ -59,6 +60,30 @@ const loadQuiz = () => {
     answer3.innerText = questionCount.c;
     answer4.innerText = questionCount.d;
   });
-};
+};*/
+
+const loadQuiz = () => {
+  const questionList =  quizDb[questionCount]
+  questions.textContent = questionList.question
+  answer1.textContent = questionList.a
+  answer2.textContent = questionList.b
+  answer3.textContent = questionList.c
+  answer4.textContent = questionList.d
+}
 
 loadQuiz();
+
+//cheacking radio button
+const getCheckAns = () => {
+  let ans;
+  answers.forEach((currentAnsElement) => {
+    if(currentAnsElement.checked){
+      ans = currentAnsElement.id
+    }
+  });
+  return ans;
+}
+button.addEventListener('click', () => {
+  const checkedAns = getCheckAns();
+  console.log(getCheckAns());
+})
