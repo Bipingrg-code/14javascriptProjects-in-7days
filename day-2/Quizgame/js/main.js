@@ -49,8 +49,10 @@ const answer4 = document.querySelector("#option4");
 const button = document.querySelector("#submit");
 const answers = document.querySelectorAll('.answer');
 
-var questionCount = 0;
+const showScore = document.querySelector('#showScore')
 
+var questionCount = 0;
+var score = 0;
 /*const loadQuiz = () => {
   quizDb.map((questList) => {
     questionCount = questList;
@@ -86,4 +88,18 @@ const getCheckAns = () => {
 button.addEventListener('click', () => {
   const checkedAns = getCheckAns();
   console.log(getCheckAns());
+  //answer checking
+  if (checkedAns === quizDb[questionCount].corretAns) {
+    score++;
+  }
+  questionCount++;
+  if (questionCount < quizDb.length) {
+    loadQuiz();
+  }else{
+    showScore.innerHTML = `
+      <h3>You scored ${score}/${quizDb.length}</h3>
+      <button class="btn" onclick="location.reload()">Play Again</button>
+    `
+    showScore.classList.remove('scoreArea');
+  }
 })
