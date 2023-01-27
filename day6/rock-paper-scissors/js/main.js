@@ -9,7 +9,7 @@
     👉 Event Listeners
     👉 Higher order Function (Math.random())
 */
-//const totalScore = { computerScore: 0, playerScore: 0 };
+const totalScore = { computerScore: 0, playerScore: 0 };
 // ** getComputerChoice randomly selects between `rock` `paper` `scissors` and returns that string **
 // getComputerChoice() 👉 'Rock'
 // getComputerChoice() 👉 'Scissors'
@@ -29,13 +29,12 @@ function getResult(playerChoice, computerChoice) {
   let score;
   // All situations where human draws, set `score` to 0
   if (playerChoice == computerChoice) {
-    return (score = 0);
+    return score = 0;
   }
- 
+
   // All situations where human wins, set `score` to 1
   // make sure to use else ifs here
   else if (playerChoice == "Rock" && computerChoice == "Scissors") {
-    
     score = 1;
   } else if (playerChoice == "Paper" && computerChoice == "Rock") {
     score = 1;
@@ -57,28 +56,30 @@ function showResult(score, playerChoice, computerChoice) {
   // Hint: on a score of -1
   // You should do result.innerText = 'You Lose!'
   // Don't forget to grab the div with the 'result' id!
-  /*const resultDiv = document.getElementById("result");
+  const resultDiv = document.getElementById("result");
   const handsDiv = document.getElementById("hands");
   const playerScoreDiv = document.getElementById("player-score");
   if (score == -1) {
-    resultDiv.innerText = "You lose";
+    resultDiv.innerText = "You lose!";
   } else if (score == 0) {
     resultDiv.innerText = "Draw";
   } else {
-    resultDiv.innerHTML = "you win";
-  }*/
-} 
+    resultDiv.innerHTML = "you win!";
+  }
+  handsDiv.innerText = `${playerChoice} vs ${computerChoice}`
+  playerScoreDiv.innerText = `Your score ${totalScore['playerScore']}`
+}
 
 // ** Calculate who won and show it on the screen **
 function onClickRPS(playerChoice) {
   console.log({ playerChoice });
   const computerChoice = getComputerChoice();
   console.log({ computerChoice });
-  const score = getResult(playerChoice, getComputerChoice);
-  //totalScore["playerScore"] += score;
-  console.log({ score });
+  const score = getResult(playerChoice, computerChoice)
+  totalScore['playerScore'] += score
+  //console.log({ score });
   //console.log(totalScore);
-  //showResult(score, playerChoice, computerChoice);
+  showResult(score, playerChoice, computerChoice)
 }
 
 // ** Make the RPS buttons actively listen for a click and do something once a click is detected **
@@ -95,8 +96,21 @@ function playGame() {
   rpsButtons.forEach((rpsButton) => {
     rpsButton.onclick = () => onClickRPS(rpsButton.value);
   });
+  const endGameBtn = document.getElementById('endGameButton')
+  endGameBtn.onclick = () => endGame(totalScore)
 }
 // ** endGame function clears all the text on the DOM **
-function endGame() {}
+function endGame() {
+  totalScore['playerScore'] = 0
+  totalScore['computerScore'] = 0
+
+  const resultDiv = document.getElementById("result");
+  const handsDiv = document.getElementById("hands");
+  const playerScoreDiv = document.getElementById("player-score");
+
+  resultDiv.innerText = ''
+  handsDiv.innerText = ''
+  playerScoreDiv.innerText = ''
+}
 
 playGame();
